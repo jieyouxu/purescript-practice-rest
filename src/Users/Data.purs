@@ -1,13 +1,8 @@
 module Users.Data
-    ( UserId
-    , User
+    ( User(..)
     ) where
 
-import Prelude
-
-type UserId = Int
-
-newtype User = User
-    { uuid: UserID,
-    , name: String
-    }
+newtype User =
+    User { uuid :: Int
+         , name :: String
+         }

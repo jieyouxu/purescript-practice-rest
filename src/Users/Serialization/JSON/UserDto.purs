@@ -6,7 +6,6 @@ module Users.Serialization.JSON.UserDto
 import Prelude
 
 import Data.Either (Either(..))
-import Effect.Class.Console (error)
 import Simple.JSON as JSON
 import Users.Data (User(..))
 
@@ -30,5 +29,7 @@ encodeUserToJSON = toDTO >>> JSON.writeJSON
 decodeUserFromJSON :: String -> Either String User
 decodeUserFromJSON str = do
     case JSON.readJSON str of
-        Left err -> do Left ("Could not parse JSON: " <> show err)
-        Right (r :: UserDTO) -> do Right (fromDTO r)
+        Left err -> do
+            Left ("Could not parse JSON: " <> show err)
+        Right (r :: UserDTO) -> do
+            Right (fromDTO r)

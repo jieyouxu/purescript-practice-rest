@@ -7,7 +7,7 @@ import Prelude
 
 import Data.Either (Either(..))
 import Simple.JSON as JSON
-import Users.Data (User(..))
+import Users.User (User(..))
 
 -- | Ensures DTO do not interfere with core business domain `User`.
 type UserDTO =
@@ -26,6 +26,8 @@ encodeUserToJSON :: User -> String
 encodeUserToJSON = toDTO >>> JSON.writeJSON
 
 -- | Deserialize a JSON object to a `User`.
+-- | All redundant whitespace must be discarded; all object keys must be quoted
+-- | with double quotes `"key": {value}`.
 decodeUserFromJSON :: String -> Either String User
 decodeUserFromJSON str = do
     case JSON.readJSON str of

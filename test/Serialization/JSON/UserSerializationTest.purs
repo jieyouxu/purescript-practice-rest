@@ -10,7 +10,7 @@ import Test.Unit (describe, it)
 import Test.Unit.Assert as Assert
 import Test.Unit.Main (runTest)
 
-import Users.Data (User(..))
+import Users.User (User(..))
 
 import Users.Serialization.JSON.UserSerialization
     ( decodeUserFromJSON
@@ -31,7 +31,7 @@ main = runTest do
                 reportsError = isLeft result
             Assert.assert "Should report error" reportsError
         it "should correctly deserialize a well-formed JSON as user" do
-            let wellFormedStr = " { uuid: 1, name: \"John Doe\" } "
+            let wellFormedStr = "{\"uuid\":1,\"name\":\"John Doe\"}"
                 actual = decodeUserFromJSON wellFormedStr
                 expected = User { uuid: 1, name: "John Doe" }
             Assert.assert "Should successfully parse" (isRight actual)

@@ -1,4 +1,4 @@
-module Users.Serialization.JSON.UserDto
+module Users.Serialization.JSON.UserSerialization
     ( encodeUserToJSON
     , decodeUserFromJSON
     ) where

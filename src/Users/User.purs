@@ -1,9 +1,8 @@
-module Users.Data
+module Users.User
     ( User(..)
     ) where
 
-import Data.Eq (class Eq, (==))
-import Data.Ord (class Ord, compare)
+import Prelude
 
 newtype User = User
     { uuid :: Int
@@ -15,3 +14,12 @@ instance eqUser :: Eq User where
 
 instance ordUser :: Ord User where
     compare (User user1) (User user2) = user1.uuid `compare` user2.uuid
+
+instance showUser :: Show User where
+    show (User user) =
+        "User "
+        <> "{ "
+        <> "uuid: " <> show user.uuid
+        <> ", "
+        <> "name: " <> user.name
+        <> " }"

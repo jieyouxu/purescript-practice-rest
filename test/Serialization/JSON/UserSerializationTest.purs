@@ -3,12 +3,19 @@ module Test.Serialization.JSON.UserSerializationTest where
 import Prelude
 
 import Data.Either (Either(..), isLeft, isRight)
+
 import Effect (Effect)
+
 import Test.Unit (describe, it)
 import Test.Unit.Assert as Assert
 import Test.Unit.Main (runTest)
+
 import Users.Data (User(..))
-import Users.Serialization.JSON.UserSerialization (decodeUserFromJSON, encodeUserToJSON)
+
+import Users.Serialization.JSON.UserSerialization
+    ( decodeUserFromJSON
+    , encodeUserToJSON
+    )
 
 main :: Effect Unit
 main = runTest do
